@@ -3,6 +3,8 @@ package com.elyeproj.surfaceviewexplore
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import com.elyeproj.surfaceviewexplore.Individual.CREATOR.IS_INFECTED
+import com.elyeproj.surfaceviewexplore.Individual.CREATOR.IS_UNINFECTED
 import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalGlowRadius
 import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalHeight
 import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalWidth
@@ -15,13 +17,13 @@ class DrawAnimate(private val height: Int, private val width: Int) {
     var individualList: List<Individual> = listOf()
 
     init {
-        individualList = (0..0).map {
+        individualList = (0..49).map {
             Individual(
                 (0..globalWidth).random().toFloat(),
                 (0..globalHeight).random().toFloat(),
                 Individual.IS_INFECTED)
         }
-        individualList += (0..99).map {
+        individualList += (0..49).map {
             Individual(
                 (0..globalWidth).random().toFloat(),
                 (0..globalHeight).random().toFloat(),
@@ -29,7 +31,7 @@ class DrawAnimate(private val height: Int, private val width: Int) {
         }
     }
 
-    fun draw(canvas: Canvas) {
+    fun draw(canvas: Canvas): Boolean {
         canvas.drawPaint(backgroundPaint)
 
         val infectedList = individualList.filter { it.isInfected == Individual.IS_INFECTED }
@@ -48,5 +50,8 @@ class DrawAnimate(private val height: Int, private val width: Int) {
 
         individualList.forEach { it.draw(canvas) }
         individualList = individualList.filter { it.isValid() }
+
+        return !(individualList.none { it.isInfected == IS_INFECTED } ||
+            individualList.none { it.isInfected == IS_UNINFECTED })
     }
 }

@@ -54,7 +54,7 @@ class SurfaceView @JvmOverloads constructor(
                 synchronized(holder) {
                     val canvas = holder.lockCanvas()
                     canvas?.let {
-                        drawAnimate.draw(it)
+                        doAnimate = drawAnimate.draw(it)
                         holder.unlockCanvasAndPost(it)
                     }
                 }

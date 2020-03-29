@@ -3,6 +3,7 @@ package com.elyeproj.surfaceviewexplore
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalGlowRadius
 import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalHeight
 import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalWidth
 
@@ -11,32 +12,41 @@ class DrawAnimate(private val height: Int, private val width: Int) {
     private val backgroundPaint = Paint()
         .apply { color = Color.LTGRAY }
 
-    var infectedIndividualList: List<InfectedIndividual> = listOf()
-    var unInfectedIndividualList: List<UnInfectedIndividual> = listOf()
+    var individualList: List<Individual> = listOf()
 
     init {
-        infectedIndividualList = (0..0).map {
-            InfectedIndividual(
+        individualList = (0..0).map {
+            Individual(
                 (0..globalWidth).random().toFloat(),
-                (0..globalHeight).random().toFloat())
+                (0..globalHeight).random().toFloat(),
+                Individual.IS_INFECTED)
         }
-        unInfectedIndividualList = (0..99).map {
-            UnInfectedIndividual(
+        individualList += (0..99).map {
+            Individual(
                 (0..globalWidth).random().toFloat(),
-                (0..globalHeight).random().toFloat())
+                (0..globalHeight).random().toFloat(),
+                Individual.IS_UNINFECTED)
         }
     }
 
     fun draw(canvas: Canvas) {
         canvas.drawPaint(backgroundPaint)
 
-        infectedIndividualList.forEach {
+        val infectedList = individualList.filter { it.isInfected == Individual.IS_INFECTED }
 
+        individualList.forEach {
+            individual ->
+            if (individual.isInfected == Individual.IS_UNINFECTED) {
+                infectedList.asSequence().firstOrNull { infected ->
+                    kotlin.math.abs(infected.centerX - individual.centerX) < globalGlowRadius &&
+                        kotlin.math.abs(infected.centerY - individual.centerY) < globalGlowRadius
+                }?.let {
+                    individual.isInfected = Individual.IS_INFECTED
+                }
+            }
         }
 
-        infectedIndividualList.forEach { it.draw(canvas) }
-        infectedIndividualList = infectedIndividualList.filter { it.isValid() }
-        unInfectedIndividualList.forEach { it.draw(canvas) }
-        unInfectedIndividualList = unInfectedIndividualList.filter { it.isValid() }
+        individualList.forEach { it.draw(canvas) }
+        individualList = individualList.filter { it.isValid() }
     }
 }

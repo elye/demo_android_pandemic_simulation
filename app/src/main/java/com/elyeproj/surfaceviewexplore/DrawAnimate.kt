@@ -13,8 +13,16 @@ import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalWidth
 
 class DrawAnimate(private val height: Int, private val width: Int) {
 
+    private val starttime = System.currentTimeMillis()
     private val backgroundPaint = Paint()
         .apply { color = Color.LTGRAY }
+
+    private val textPaint = Paint()
+        .apply { color = Color.BLUE }
+        .apply { textSize = 96f }
+        .apply { isAntiAlias = true }
+        .apply { strokeWidth = 2f }
+        .apply { textAlign = Paint.Align.CENTER }
 
     var individualList: List<Individual> = listOf()
 
@@ -35,7 +43,7 @@ class DrawAnimate(private val height: Int, private val width: Int) {
 
     fun draw(canvas: Canvas): Boolean {
         canvas.drawPaint(backgroundPaint)
-
+        
         val infectedList = individualList.filter { it.isInfected == Individual.IS_INFECTED }
 
         individualList.forEach {
@@ -52,6 +60,9 @@ class DrawAnimate(private val height: Int, private val width: Int) {
 
         individualList.forEach { it.draw(canvas) }
         individualList = individualList.filter { it.isValid() }
+
+        val timeDiff = System.currentTimeMillis() - starttime
+        canvas.drawText("$timeDiff ms", width/2f, height/2f, textPaint)
 
         return !(individualList.none { it.isInfected == IS_INFECTED } ||
             individualList.none { it.isInfected == IS_UNINFECTED })

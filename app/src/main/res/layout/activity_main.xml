@@ -18,8 +18,8 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:max="255"
-        android:min="1"
+        android:max="10"
+        android:min="0"
         android:progress="@integer/default_infected_people" />
 
     <TextView
@@ -34,8 +34,8 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:max="255"
-        android:min="1"
+        android:max="300"
+        android:min="0"
         android:progress="@integer/default_uninfected_people" />
 
     <TextView
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:max="20"
-        android:min="1"
+        android:min="0"
         android:progress="@integer/default_mobility_distance" />
 
     <TextView
@@ -66,8 +66,8 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:max="160"
-        android:min="1"
+        android:max="60"
+        android:min="0"
         android:progress="@integer/default_infectious_distance" />
 
     <Button

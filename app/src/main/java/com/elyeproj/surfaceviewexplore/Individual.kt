@@ -5,8 +5,8 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.os.Parcel
 import android.os.Parcelable
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalGlowRadius
 import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalHeight
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalInfectiousDistance
 import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalItemRadius
 import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalMobilityDistance
 import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalWidth
@@ -45,10 +45,11 @@ data class Individual(var centerX: Float,
     }
 
     fun draw(canvas: Canvas) {
-        infectedRadiusPaint.apply { alpha = ((globalGlowRadius - currentRadius) / globalGlowRadius * MAX_ALPHA).toInt() }
+        infectedRadiusPaint.apply { alpha = ((globalInfectiousDistance - currentRadius) /
+            globalInfectiousDistance * MAX_ALPHA).toInt() }
 
         if (isInfected == IS_INFECTED) {
-            if (currentRadius >= globalGlowRadius) {
+            if (currentRadius >= globalInfectiousDistance) {
                 growState = IS_SHRINKING
             } else if (currentRadius <= 0) {
                 growState = IS_GROWING

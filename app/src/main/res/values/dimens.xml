@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="max_glowing_radius">16dp</dimen>
     <dimen name="max_item_radius">4dp</dimen>
     <integer name="default_infected_people">1</integer>
     <integer name="default_uninfected_people">100</integer>
     <integer name="default_mobility_distance">4</integer>
+    <integer name="default_infectious_distance">48</integer>
 </resources>

@@ -54,6 +54,22 @@
         android:min="1"
         android:progress="@integer/default_mobility_distance" />
 
+    <TextView
+        android:layout_marginTop="32dp"
+        android:id="@+id/title_infectious_distance"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <SeekBar
+        android:id="@+id/seek_infectious_distance"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:max="160"
+        android:min="1"
+        android:progress="@integer/default_infectious_distance" />
+
     <Button
         android:id="@+id/simulate_view_button"
         android:textSize="24sp"

@@ -9,6 +9,7 @@ class SimulationActivity : AppCompatActivity() {
         const val KEY_INFECTED = "InfectedKey"
         const val KEY_UNINFECTED = "UninfectedKey"
         const val KEY_MOBILITY = "MobilityKey"
+        const val KEY_INFECTIOUS = "InfectiousKEy"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +17,7 @@ class SimulationActivity : AppCompatActivity() {
         SimulationView.globalInfected = intent.getIntExtra(KEY_INFECTED, 0)
         SimulationView.globalUninfected = intent.getIntExtra(KEY_UNINFECTED, 0)
         SimulationView.globalMobilityDistance = intent.getIntExtra(KEY_MOBILITY, 0)
+        SimulationView.globalInfectiousDistance = intent.getIntExtra(KEY_INFECTIOUS, 0)
         setContentView(R.layout.activity_simulation)
     }
 }

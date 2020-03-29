@@ -17,11 +17,11 @@ class SimulationView @JvmOverloads constructor(
     companion object {
         var globalHeight = 0
         var globalWidth = 0
-        var globalGlowRadius = 0f
         var globalItemRadius = 0f
         var globalInfected = 0
         var globalUninfected = 0
         var globalMobilityDistance = 0
+        var globalInfectiousDistance = 0
     }
 
     private var job: Job? = null
@@ -29,7 +29,6 @@ class SimulationView @JvmOverloads constructor(
     private val drawAnimate by lazy {
         globalHeight = height
         globalWidth = width
-        globalGlowRadius = context.resources.getDimension(R.dimen.max_glowing_radius)
         globalItemRadius = context.resources.getDimension(R.dimen.max_item_radius)
         DrawAnimate(height, width)
     }

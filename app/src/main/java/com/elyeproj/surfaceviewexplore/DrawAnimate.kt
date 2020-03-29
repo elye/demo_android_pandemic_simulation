@@ -5,9 +5,9 @@ import android.graphics.Color
 import android.graphics.Paint
 import com.elyeproj.surfaceviewexplore.Individual.CREATOR.IS_INFECTED
 import com.elyeproj.surfaceviewexplore.Individual.CREATOR.IS_UNINFECTED
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalGlowRadius
 import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalHeight
 import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalInfected
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalInfectiousDistance
 import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalUninfected
 import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalWidth
 
@@ -42,8 +42,8 @@ class DrawAnimate(private val height: Int, private val width: Int) {
             individual ->
             if (individual.isInfected == Individual.IS_UNINFECTED) {
                 infectedList.asSequence().firstOrNull { infected ->
-                    kotlin.math.abs(infected.centerX - individual.centerX) < globalGlowRadius &&
-                        kotlin.math.abs(infected.centerY - individual.centerY) < globalGlowRadius
+                    kotlin.math.abs(infected.centerX - individual.centerX) < globalInfectiousDistance &&
+                        kotlin.math.abs(infected.centerY - individual.centerY) < globalInfectiousDistance
                 }?.let {
                     individual.isInfected = Individual.IS_INFECTED
                 }

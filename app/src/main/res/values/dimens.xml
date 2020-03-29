@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="max_random_move">4</integer>
     <dimen name="max_glowing_radius">16dp</dimen>
     <dimen name="max_item_radius">4dp</dimen>
 </resources>

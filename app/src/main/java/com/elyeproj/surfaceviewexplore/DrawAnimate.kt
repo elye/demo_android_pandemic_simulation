@@ -5,9 +5,11 @@ import android.graphics.Color
 import android.graphics.Paint
 import com.elyeproj.surfaceviewexplore.Individual.CREATOR.IS_INFECTED
 import com.elyeproj.surfaceviewexplore.Individual.CREATOR.IS_UNINFECTED
-import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalGlowRadius
-import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalHeight
-import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalWidth
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalGlowRadius
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalHeight
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalInfected
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalUninfected
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalWidth
 
 class DrawAnimate(private val height: Int, private val width: Int) {
 
@@ -17,13 +19,13 @@ class DrawAnimate(private val height: Int, private val width: Int) {
     var individualList: List<Individual> = listOf()
 
     init {
-        individualList = (0..49).map {
+        individualList = (0 until globalInfected).map {
             Individual(
                 (0..globalWidth).random().toFloat(),
                 (0..globalHeight).random().toFloat(),
                 Individual.IS_INFECTED)
         }
-        individualList += (0..49).map {
+        individualList += (0 until globalUninfected).map {
             Individual(
                 (0..globalWidth).random().toFloat(),
                 (0..globalHeight).random().toFloat(),

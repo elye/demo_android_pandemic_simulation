@@ -8,7 +8,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class SurfaceView @JvmOverloads constructor(
+class SimulationView @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0)
@@ -19,7 +19,9 @@ class SurfaceView @JvmOverloads constructor(
         var globalWidth = 0
         var globalGlowRadius = 0f
         var globalItemRadius = 0f
-        var globalMaxMove = 0
+        var globalInfected = 0
+        var globalUninfected = 0
+        var globalMobilityDistance = 0
     }
 
     private var job: Job? = null
@@ -29,7 +31,6 @@ class SurfaceView @JvmOverloads constructor(
         globalWidth = width
         globalGlowRadius = context.resources.getDimension(R.dimen.max_glowing_radius)
         globalItemRadius = context.resources.getDimension(R.dimen.max_item_radius)
-        globalMaxMove = context.resources.getInteger(R.integer.max_random_move)
         DrawAnimate(height, width)
     }
 

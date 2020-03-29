@@ -5,11 +5,11 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.os.Parcel
 import android.os.Parcelable
-import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalGlowRadius
-import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalHeight
-import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalItemRadius
-import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalMaxMove
-import com.elyeproj.surfaceviewexplore.SurfaceView.Companion.globalWidth
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalGlowRadius
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalHeight
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalItemRadius
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalMobilityDistance
+import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalWidth
 
 data class Individual(var centerX: Float,
                       var centerY: Float,
@@ -72,7 +72,7 @@ data class Individual(var centerX: Float,
     private fun randomMove(current: Float, maxCurrent: Int): Float {
         var new: Float
         do {
-            new = current + (-globalMaxMove..globalMaxMove).random()
+            new = current + (-globalMobilityDistance..globalMobilityDistance).random()
         } while (new >= maxCurrent || new <= 0 )
 
         return new

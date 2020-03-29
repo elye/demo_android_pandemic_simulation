@@ -1,15 +1,15 @@
-package com.elyeproj.surfaceviewexplore
+package com.elyeproj.pandemicsimulation
 
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Parcel
 import android.os.Parcelable
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalHeight
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalInfectiousDistance
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalItemRadius
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalMobilityDistance
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalWidth
+import com.elyeproj.pandemicsimulation.SimulationView.Companion.globalHeight
+import com.elyeproj.pandemicsimulation.SimulationView.Companion.globalInfectiousDistance
+import com.elyeproj.pandemicsimulation.SimulationView.Companion.globalItemRadius
+import com.elyeproj.pandemicsimulation.SimulationView.Companion.globalMobilityDistance
+import com.elyeproj.pandemicsimulation.SimulationView.Companion.globalWidth
 
 data class Individual(var centerX: Float,
                       var centerY: Float,

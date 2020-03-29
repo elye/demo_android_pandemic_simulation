@@ -1,15 +1,15 @@
-package com.elyeproj.surfaceviewexplore
+package com.elyeproj.pandemicsimulation
 
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import com.elyeproj.surfaceviewexplore.Individual.CREATOR.IS_INFECTED
-import com.elyeproj.surfaceviewexplore.Individual.CREATOR.IS_UNINFECTED
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalHeight
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalInfected
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalInfectiousDistance
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalUninfected
-import com.elyeproj.surfaceviewexplore.SimulationView.Companion.globalWidth
+import com.elyeproj.pandemicsimulation.Individual.CREATOR.IS_INFECTED
+import com.elyeproj.pandemicsimulation.Individual.CREATOR.IS_UNINFECTED
+import com.elyeproj.pandemicsimulation.SimulationView.Companion.globalHeight
+import com.elyeproj.pandemicsimulation.SimulationView.Companion.globalInfected
+import com.elyeproj.pandemicsimulation.SimulationView.Companion.globalInfectiousDistance
+import com.elyeproj.pandemicsimulation.SimulationView.Companion.globalUninfected
+import com.elyeproj.pandemicsimulation.SimulationView.Companion.globalWidth
 
 class DrawAnimate(private val height: Int, private val width: Int) {
 
@@ -43,7 +43,7 @@ class DrawAnimate(private val height: Int, private val width: Int) {
 
     fun draw(canvas: Canvas): Boolean {
         canvas.drawPaint(backgroundPaint)
-        
+
         val infectedList = individualList.filter { it.isInfected == Individual.IS_INFECTED }
 
         individualList.forEach {

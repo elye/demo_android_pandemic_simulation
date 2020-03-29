@@ -1,4 +1,4 @@
-package com.elyeproj.surfaceviewexplore
+package com.elyeproj.pandemicsimulation
 
 import android.content.Intent
 import android.os.Bundle

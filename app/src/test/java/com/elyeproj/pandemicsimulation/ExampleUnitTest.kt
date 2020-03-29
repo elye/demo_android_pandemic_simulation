@@ -1,4 +1,4 @@
-package com.elyeproj.surfaceviewexplore
+package com.elyeproj.pandemicsimulation
 
 import org.junit.Test
 

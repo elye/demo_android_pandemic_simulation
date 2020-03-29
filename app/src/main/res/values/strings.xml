@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Surface View Explore</string>
+    <string name="app_name">Pandemic Simulation</string>
     <string name="button_start_simulation">Start Pandemic Simulation</string>
     <string name="title_infected_people">Infected People: %1$d</string>
     <string name="title_uninfected_people">Uninfected People: %1$d</string>

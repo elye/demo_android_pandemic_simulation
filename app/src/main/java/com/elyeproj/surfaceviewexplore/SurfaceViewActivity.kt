@@ -3,7 +3,7 @@ package com.elyeproj.surfaceviewexplore
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-class SlowSurfaceViewActivity : AppCompatActivity() {
+class SurfaceViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

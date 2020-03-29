@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SlowViewActivity" />
-        <activity android:name=".SlowSurfaceViewActivity" />
+        <activity android:name=".SurfaceViewActivity" />
     </application>
 
 </manifest>

@@ -7,11 +7,12 @@ import android.view.SurfaceView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 
 class SimulationView @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0)
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0)
     : SurfaceView(context, attrs, defStyleAttr), SurfaceHolder.Callback {
 
     companion object {
@@ -33,6 +34,8 @@ class SimulationView @JvmOverloads constructor(
         DrawAnimate(height, width)
     }
 
+    private val timer = Timer()
+
     init {
         holder.addCallback(this)
     }
@@ -43,22 +46,30 @@ class SimulationView @JvmOverloads constructor(
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
         doAnimate = false
+        timer.cancel()
+        timer.purge()
         job?.cancel()
         job = null
     }
 
     override fun surfaceCreated(holder: SurfaceHolder) {
         doAnimate = true
+
         job = GlobalScope.launch {
-            while (doAnimate && isAttachedToWindow) {
-                synchronized(holder) {
-                    val canvas = holder.lockCanvas()
-                    canvas?.let {
-                        doAnimate = drawAnimate.draw(it)
-                        holder.unlockCanvasAndPost(it)
+            timer.scheduleAtFixedRate(object : TimerTask() {
+                override fun run() {
+                    if (doAnimate && isAttachedToWindow) {
+                        synchronized(holder) {
+                            val canvas = holder.lockCanvas()
+                            canvas?.let {
+                                doAnimate = drawAnimate.draw(it)
+                                holder.unlockCanvasAndPost(it)
+                            }
+                        }
+                        System.gc()
                     }
                 }
-            }
+            }, 0, 25)
         }
     }
 }
